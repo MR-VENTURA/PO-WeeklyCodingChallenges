@@ -1,0 +1,50 @@
+package WeeklyCodingChallenges;
+
+import java.util.Scanner;
+
+public class LogicalReasoningMonth {
+	//what day is 14th of a month
+	//last day (wednesday)
+	//third Saturday is (17th)
+	
+	public static void main(String args[]) {
+	Scanner sc = new Scanner(System.in);
+	//Will be given a month
+	System.out.println("Input month using integer");
+	int month = sc.nextInt();
+	//Statement I- last day of the month  convert to int
+	System.out.println("Statement I: Input day of the week of last day of month(lower case please)");
+	String lastDay = sc.next(); //should be sufficient unless feburary with unknown year
+	//Statement II- third Saturday of the month
+	System.out.println("Statement II: Input the day of the third Saturday(ex/ 17)");
+	int thirdSat = sc.nextInt();   //should always be sufficient to find the 14th of the month
+	
+	int last = 0;
+	switch(lastDay) {
+	case "sunday": last = 1; break;
+	case "monday": last = 2; break;
+	case "tuesday": last = 3; break;
+	case "wednesday": last = 4; break;
+	case "thursday": last = 5; break;
+	case "friday": last = 6; break;
+	case "saturday": last = 7; break;
+	default: System.out.println("Invalid day of week entered");
+	}
+	int monthLength = 0;
+	switch(month) {
+	case 1: case 3: case 5: case 7: case 8: case 10: case 12: monthLength = 31; break;
+	case 4: case 6: case 9: case 11: monthLength = 30; break; 
+	}
+	
+	//if month is given
+	if(month != 2) {
+		System.out.println("Statement I or II alone is sufficient");
+	} else {
+		System.out.println("Statement II alone is sufficient but Statement I will not be");
+	}
+	
+	
+	
+	}
+
+}
