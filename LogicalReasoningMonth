@@ -41,6 +41,9 @@ public class LogicalReasoningMonth {
 		System.out.println("Statement I or II alone is sufficient");
 	} else {
 		System.out.println("Statement II alone is sufficient but Statement I will not be");
+		
+		/*If no month but only statement I and II are given this will be the answer. Not knowing the month length makes it impossible to use Statement I alone,
+		Can find out the month length using both Statements I and II. However Statement II will always be sufficient. */
 	}
 	
 	
