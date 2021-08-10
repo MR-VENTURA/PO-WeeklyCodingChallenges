@@ -1,0 +1,53 @@
+package WeeklyCodingChallenges;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Nodes {
+	int num;
+	Nodes left, right;
+	public Nodes(int x) {
+		num = x;
+		left = null;
+		right = null;
+	}
+}
+
+public class BinaryTreeTraversal {
+	//level order traversal of binary tree
+	
+	
+	Nodes root;
+	
+	void PrintLevelOrder() {
+		Queue<Nodes> q = new LinkedList<Nodes>();
+		q.add(root);
+		while (!q.isEmpty()) {
+			Nodes temp = q.poll();
+			System.out.print(temp.num + " ");
+			if(temp.left != null) {
+				q.add(temp.left);
+			}
+			if(temp.right != null) {
+				q.add(temp.right);
+			}
+		}
+	}
+	
+	public static void main(String args[]) {
+		BinaryTreeTraversal tree = new BinaryTreeTraversal();
+		
+		//create binary tree to test
+		tree.root = new Nodes(1);
+		tree.root.left = new Nodes(2);
+		tree.root.right = new Nodes(3);
+		tree.root.left.left = new Nodes(4);
+		tree.root.left.right = new Nodes(5);
+		
+		tree.PrintLevelOrder();
+	}
+	
+	void PrintCurrentLevel() {
+		
+	}
+}
