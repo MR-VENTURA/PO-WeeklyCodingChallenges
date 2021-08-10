@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class LogicalReasoningMonth {
 	//what day is 14th of a month
 	//last day (wednesday)
-	//third Saturday is (17th)
+	//third Saturday is (17th)   
+	//In the example given the 14th would be a wednesday. Can caluculate this w/ Statement II alone but not Statement I(can't subtract as the last day could be 30, 31, 28, 29)
+	//In this particualr example we could use both Statement I and Statement II to find the month length(28) and then subtract from Statment I but that is more work.
 	
 	public static void main(String args[]) {
 	Scanner sc = new Scanner(System.in);
@@ -30,6 +32,8 @@ public class LogicalReasoningMonth {
 	case "saturday": last = 7; break;
 	default: System.out.println("Invalid day of week entered");
 	}
+	
+	//useful if want to find out the day of the week the 14th using Statement I
 	int monthLength = 0;
 	switch(month) {
 	case 1: case 3: case 5: case 7: case 8: case 10: case 12: monthLength = 31; break;
@@ -39,11 +43,13 @@ public class LogicalReasoningMonth {
 	//if month is given
 	if(month != 2) {
 		System.out.println("Statement I or II alone is sufficient");
+		//If month is known either statement can be used, count backwards from either day to find the 14th.
 	} else {
 		System.out.println("Statement II alone is sufficient but Statement I will not be");
 		
-		/*If no month but only statement I and II are given this will be the answer. Not knowing the month length makes it impossible to use Statement I alone,
-		Can find out the month length using both Statements I and II. However Statement II will always be sufficient. */
+		/*If no month but only statement I and II are given this will be the answer. Same if the month is February but the year is unknown, could be 28 or 29 days.
+		Not knowing the month length makes it impossible to use Statement I alone. Can find out the month length using both Statements I and II. 
+		However Statement II will always be sufficient. */
 	}
 	
 	
