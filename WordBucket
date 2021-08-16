@@ -1,0 +1,55 @@
+package WeeklyCodingChallenges;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+/*Write a function that divides a phrase into word buckets, with each bucket containing n or fewer characters. 
+Only include full words inside each bucket.*/
+public class WordBucket {
+
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		String phrase = new String();
+		//phrase = "she sells sea shells by the sea";
+		//phrase = "the mouse jumped over the cheese";
+		phrase = "fairy dust coated the air";
+		//phrase = "a b c d e";
+		int max = 20;
+		
+		//Use Scanner to delineate phrase and maximum characters per bucket.
+		//phrase = sc.nextLine();
+		//max = sc.nextInt();
+		
+		boolean bucketFit = true;
+		String[] s = phrase.split(" ");
+		StringBuilder x = new StringBuilder();
+		List<String> ans = new ArrayList<String>();
+		
+		for(int i = 0; i< s.length; i++) {
+			if(s[i].length() > max) {bucketFit = false; break;} 
+			if((s[i].length() + x.length()) <= max){
+			x.append(s[i] + " "); 
+			} else {
+				String y = new String(x);
+				y = y.trim();
+			    ans.add(y);
+			    x.delete(0, x.length());
+			    x.append(s[i] + " ");
+			}
+		}
+		
+		String a = String.join(", ", ans); 
+		String ab = a.replace(",", "");
+		String end = phrase.replace(ab, "");
+		end = end.trim();
+		ans.add(end);
+		
+		if(bucketFit == false) {
+			ans.clear();
+		}
+		Object[] bucket = ans.toArray();
+		System.out.println(Arrays.toString(bucket));
+	}
+}
