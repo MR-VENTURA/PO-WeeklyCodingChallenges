@@ -1,0 +1,45 @@
+package WeeklyCodingChallenges;
+
+import java.util.Scanner;
+
+public class CreditCardNumber {
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		try {
+		long x = sc.nextLong();
+		//long x = 1234567890123456L;
+		//long x = 1234567890123452L;
+		System.out.println(validCCN(x));
+		}catch(Exception e){
+			System.out.println(false);
+		}
+	}
+	
+	public static boolean validCCN(long i) {
+		String original = String.valueOf(i);
+		if(original.length() < 14 || original.length() > 19) { System.out.println("hit false");
+			return false;   
+		}
+		int check = Character.getNumericValue(original.charAt(original.length()-1));
+		String s = original.substring(0, original.length()-1);
+		StringBuilder rs = new StringBuilder(s);
+		rs = rs.reverse();
+	
+		int allDigit = 0;
+		for(int j = 0; j<rs.length(); j++) {
+			int x = Character.getNumericValue(rs.charAt(j));
+			if(j%2 == 0) {
+				x += x;
+				if(x > 9) {
+					x = (x%10) + 1;
+				}
+			}
+			allDigit += x;
+		}
+		if(10 - (allDigit%10) == check) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
